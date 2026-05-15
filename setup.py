@@ -20,6 +20,6 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'sample_controller = lab2task4.task4:main',],
+            'sample_controller = lab2task4.sample_controller:main',],
     },
 )
