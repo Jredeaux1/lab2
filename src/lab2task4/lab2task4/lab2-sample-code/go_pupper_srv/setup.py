@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'go_pupper_srv'
+package_name = 'lab2task4'
 
 setup(
     name=package_name,
@@ -16,12 +16,12 @@ setup(
     maintainer='lriek',
     maintainer_email='lriek@ucsd.edu',
     description='Go Pupper Service: Robot commands as a service',
-    license='Apache-2.0',
+    license='Apache-2.0',`
     tests_require=['pytest'],
     entry_points={
-        'console_scripts': ['service = go_pupper_srv.service_go_pupper:main',
-                            'client = go_pupper_srv.client_go_pupper:main',
-                            'salsa = go_pupper_srv.sample_controller:main',
+        'console_scripts': ['labservice = go_pupper_srv.service_go_pupper:main',
+                            'labclient = go_pupper_srv.client_go_pupper:main',
+                            'touchcontrol  = go_pupper_srv.sample_controller:main',
         ],
     },
 )
