@@ -89,9 +89,15 @@ class SampleControllerAsync(Node):
         # go forward
         for i in range(3):
             self.send_move_request("move_forward")
-   
+
+    ###
+    # Name: task4
+    # Purpose: read GPIO sensors, then move accordingly
+    # Arguments:  self (reference the current class)
+    #####
     def task4(self):
         while True:
+            # read GPIO values
             touchValue_Front = GPIO.input(self.touchPin_Front)
             touchValue_Back = GPIO.input(self.touchPin_Back)
             touchValue_Left = GPIO.input(self.touchPin_Left)
@@ -99,22 +105,27 @@ class SampleControllerAsync(Node):
 
             display_string = ''
 
+            # if front is touched, move forward
             if not touchValue_Front:
                 display_string += ' Front'
                 self.send_move_request("move_forward")
 
+            # if back is touched, move back
             if not touchValue_Back:
                 display_string += ' Back'
                 self.send_move_request("move_backward")
 
+            # if right is touched, move right
             if not touchValue_Right:
                 display_string += ' Right'
                 self.send_move_request("move_right")
 
+            # if left is touched, move left
             if not touchValue_Left:
                 display_string += ' Left'
                 self.send_move_request("move_left")
 
+            # if nothing is touched, don't move
             if display_string == '':
                 display_string = 'No button touched'
 
@@ -130,7 +141,7 @@ def main():
     rclpy.init()
     sample_controller = SampleControllerAsync()
 
-    # send commands to do the conga dance
+    # send commands to listen to touch sensor and move accordingly
     sample_controller.task4()
 
     # This spins up a client node, checks if it's done, throws an exception of there's an issue
